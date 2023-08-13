@@ -1,0 +1,97 @@
+using System;
+namespace Company
+{
+	public class Person
+	{
+		protected static string name;
+		protected static byte age;
+		
+		public Person()
+		{
+		}
+		public Person(string n, byte a)
+		{
+			name= n;
+			age=a;
+		}
+		protected void setName(string n)
+		{
+			name= n;
+		}
+		protected void setAge(byte a)
+		{
+			age= a;
+		}
+		internal string getName()
+		{
+			return name;
+		}
+		internal byte getAge()
+		{
+			return age;
+		}
+		
+	}
+
+	class Employee: Person
+	{
+	
+		private decimal salary;
+		private int otHours;
+		private string designation;
+		
+		public Employee()
+		{
+		}
+		
+		public Employee(int o, string d, string name, byte age): base(name,age)
+		{
+			otHours=o;
+			designation=d;
+		}
+		
+		public void calculateSalary(int basic)
+		{
+			if (designation == "Lecturer")
+				salary = basic + (otHours * 2000);
+			else
+				salary = basic + (otHours * 500);
+			Console.WriteLine("Salary = " + salary);
+		}
+	}
+}	
+
+public class Program
+{
+	public static void Main()
+	{
+		Company.Person p= new Company.Person("Perera" ,20);
+		Company.Employee e1 = new Company.Employee(10,"lecturer","Lakmini",20);
+		e1.calculateSalary(80000);
+		
+		Console.WriteLine("------------Enter Employee 2 data -------");
+			//Employee e2 = new Employee();
+			Console.Write("Enter name:");
+			string na = Console.ReadLine();
+
+			Console.Write("Enter age:");
+			byte ag = Convert.ToByte(Console.ReadLine());
+
+			Console.Write("Enter OT Hours:");
+			byte ot = Convert.ToByte(Console.ReadLine());
+
+			Console.Write("Enter designation:");
+			string des = Console.ReadLine();
+
+			Company.Employee e2 = new Company.Employee(ot,des,na,ag);
+
+
+			Console.Write("Enter basic salary:");
+			e2.calculateSalary(Convert.ToInt32(Console.ReadLine()));
+
+			
+			
+		
+		
+	}
+}

@@ -1,0 +1,52 @@
+using System;
+namespace Company;
+public class Employee
+{
+     
+	public string name;
+	public byte age;
+	public decimal salary;
+	public byte OtHours;
+	public string designation;
+
+	public void calculateSalary(int basic)
+	{	
+		if(designation == "Lecturer")
+			salary = basic+ (otHours *2000)
+		else
+			salary = basic+ (otHours *500)
+		Console.WriteLine("Salary = "+salary)
+	}
+}
+
+using System;
+using Company;
+namespace ConsoleApp1;
+public class Program
+{
+	void Main(string[] args)
+	{
+		Employee e1= new Employee();
+		e1.name= "Lakmini";
+		e1.age= 25;
+		e1.OtHours =10;
+		e1.designation= "Lecturer";
+		e1.calculateSalary(80000);
+	
+		Employee e2= new Employee();
+		Console.Write("Enter name:");
+		e2.name= Console.ReadLine();
+		
+		Console.Write("Enter age:");
+		e1.age= Convert.ToByte(Console.ReadLine());
+		
+		Console.Write("Enter OT Hours:");
+		e1.OtHours =Convert.ToByte(Console.ReadLine());
+
+		Console.Write("Enter designation:");
+		e1.designation= Console.ReadLine();
+		
+		Console.Write("Enter basic salary:");
+		e1.calculateSalary(Convert.ToByte(Console.ReadLine()));
+	}	
+}

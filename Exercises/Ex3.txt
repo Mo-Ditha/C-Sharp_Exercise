@@ -1,0 +1,105 @@
+using System;
+
+namespace Company
+{
+    class Employee
+    {
+                private string name;
+                private byte age;
+                private decimal salary;
+                private byte OtHours;
+                private string designation;
+
+                public Employee()
+                {
+
+                }
+                public Employee(string n, byte a, byte o, string d)
+                {
+                        name = n;
+                        age = a;
+                        OtHours = o;
+                        designation = d;
+                }
+                public string getName()
+                {
+                        return name;                        
+                }
+                public byte getAge()
+                {
+                        return age;                        
+                }
+                internal decimal getSalary()
+                {
+                        return salary;
+                }
+                
+                public void setName(string n)
+                {
+                        name=n;
+                }
+                
+                public void calculateSalary(int basic)
+                {
+                        if (designation == "Lecturer")
+                                salary = basic + (OtHours * 2000);
+                        else
+                                salary = basic + (OtHours * 500);
+                        Console.WriteLine("Salary = " + salary);
+                }
+
+                public void printData()
+                {
+                        Console.WriteLine(name + "\n" + age + "\n" +designation + "\n" + salary);
+                }
+        }
+}
+
+namespace ConsoleApp5
+{
+    public class Program
+    {
+       public static void Main(string[] args)
+        {
+                        //Employee e1 = new Employee();
+                        Company.Employee e1 = new Company.Employee("Lakmini", 25,10, "Lecturer");
+                        e1.calculateSalary(80000);
+                        Console.WriteLine("------------Employee 1 data -------");
+                        e1.printData();
+                        // call getter for name:  Console.WriteLine(e1.getName());
+                   //        call setter for name :    e1.setName("Tharanga");
+                   
+                        decimal updatedSal = e1.getSalary() + 5000;
+                    Console.WriteLine("Updated salary = " + updatedSal);
+                   
+                   
+                   
+                        Console.WriteLine("------------Enter Employee 2 data -------");
+                        //Employee e2 = new Employee();
+                        Console.Write("Enter name:");
+                        string na = Console.ReadLine();
+
+                        Console.Write("Enter age:");
+                        byte ag = Convert.ToByte(Console.ReadLine());
+
+                        Console.Write("Enter OT Hours:");
+                        byte Ot = Convert.ToByte(Console.ReadLine());
+
+                        Console.Write("Enter designation:");
+                        string des = Console.ReadLine();
+
+                        Company.Employee e2 = new Company.Employee(na,ag,Ot,des);
+
+
+                        Console.Write("Enter basic salary:");
+                        e2.calculateSalary(Convert.ToInt32(Console.ReadLine()));
+
+                        Console.WriteLine("------------Employee 2 data -------");
+                        e2.printData();
+                        
+                   updatedSal = e2.getSalary() + 5000;
+                    Console.WriteLine("Updated salary = " + updatedSal);
+                        
+                }
+        }
+ }

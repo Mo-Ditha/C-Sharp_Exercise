@@ -1,0 +1,60 @@
+using System;
+public class Father
+{
+protected string name;
+private string carNo;
+protected int speed;
+
+public Father(){}
+
+public void print() //first print method
+{
+Console.WriteLine("Name : "+ name +"Car number :"+ carNo + "Speed :"+speed);
+}
+public virtual void drive()
+{
+Console.WriteLine("Speed :"+speed);
+}
+public void print(string condition) //overloaded print method
+{
+if(condition == "Good")
+Console.WriteLine("Speed : 70Kmph");
+if(condition == "Bad")
+Console.WriteLine("Speed : 50Kmph");
+
+}
+
+}
+public class Son :Father
+{
+public decimal fine;
+
+public Son()
+{
+}
+public override void drive()
+{
+Console.WriteLine("Speed : 100Kmph");
+}
+
+public void calFine(bool maxSpeedEx,bool acci)
+{
+if(maxSpeedEx==true && acci==true)
+{
+Console.WriteLine("Fine: 50000");
+}
+if(maxSpeedEx==true && acci==false)
+{
+Console.WriteLine("Fine: 10000");
+}
+
+}
+
+}
+public class Program
+{
+public static void Main()
+{
+Console.WriteLine("Hello World");
+}
+}
